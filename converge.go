@@ -18,3 +18,8 @@ type Converge struct {
 	// The codegen options for the preferred targets (e.g. TypeScript)
 	codegenOptions []codegen.Options
 }
+
+// TODO: add options to pass into the New function
+// func New() *Converge {
+// 	return &Converge{}
+// }
