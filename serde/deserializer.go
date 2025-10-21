@@ -19,5 +19,5 @@ type Deserializer[Target any] interface {
 	//	}
 	//
 	// Note: The caller is responsible for ensuring that the target struct is of the correct type.
-	Deserialize(data []byte, v *Target) error
+	Deserialize(data []byte) (*Target, error)
 }

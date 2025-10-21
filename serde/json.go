@@ -3,12 +3,12 @@ package serde
 type Json[T any] struct{}
 
 // Deserialize implements Deserializer.
-func (j *Json[T]) Deserialize(data []byte, v *T) error {
+func (j *Json[T]) Deserialize(data []byte) (*T, error) {
 	panic("unimplemented")
 }
 
 // Serialize implements Serializer.
-func (j *Json[T]) Serialize(v interface{}) ([]byte, error) {
+func (j *Json[T]) Serialize(v any) ([]byte, error) {
 	panic("unimplemented")
 }
 

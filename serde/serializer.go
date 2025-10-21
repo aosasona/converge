@@ -7,7 +7,7 @@ It includes methods for correctly serializing data, and retrieving the appropria
 */
 type Serializer interface {
 	// Serialize serializes the given value into a byte slice.
-	Serialize(v interface{}) ([]byte, error)
+	Serialize(v any) ([]byte, error)
 
 	// ContentType returns the mime type for the serialized data.
 	ContentType() string
