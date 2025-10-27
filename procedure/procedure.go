@@ -20,4 +20,7 @@ type Procedure[I, O any] interface {
 
 	// Handle processes the input and returns the output or an error
 	Handle(c *Context, input I) (O, error)
+
+	// The path to use for the REST or websocket endpoint (e.g. "/user/profile")
+	Path() string
 }
