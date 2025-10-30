@@ -29,6 +29,10 @@ type Procedure[I, O any] interface {
 	Path() string
 
 	// WithPath sets the path for the procedure and returns a modified copy
+	// Paths can contain path parameters in curly braces (e.g. "/user/{id}/profile")
+	// These will be automatically extracted and made available in the Context when the procedure is executed
+	//
+	// You can get a path parameter value by calling Context.Param("paramName"), this will yield the value as a string and is safe to call even if the parameter does not exist
 	WithPath(path string) Procedure[I, O]
 
 	// InputType returns an empty instance of the input type
