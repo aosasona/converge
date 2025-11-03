@@ -9,7 +9,6 @@ type ProcedureType string
 
 type Handler[In, Out any] func(c *Context, input In) (Out, error)
 
-// TODO: define procedure interface
 type Procedure[I, O any] interface {
 	fmt.Stringer
 
@@ -26,7 +25,7 @@ type Procedure[I, O any] interface {
 	Handle(c *Context, input I) (O, error)
 
 	// The path to use for the REST or websocket endpoint (e.g. "/user/profile")
-	Path() string
+	Path() Path
 
 	// WithPath sets the path for the procedure and returns a modified copy
 	// Paths can contain path parameters in curly braces (e.g. "/user/{id}/profile")

@@ -2,7 +2,7 @@ package procedure
 
 type baseProcedure[I, O any] struct {
 	name string
-	path string
+	path Path
 }
 
 // Handle implements Procedure.
@@ -26,7 +26,7 @@ func (b *baseProcedure[I, O]) OutputType() any {
 }
 
 // Path implements Procedure.
-func (b *baseProcedure[I, O]) Path() string {
+func (b *baseProcedure[I, O]) Path() Path {
 	return b.path
 }
 
@@ -47,22 +47,6 @@ func (b *baseProcedure[I, O]) WithPath(path string) Procedure[I, O] {
 	_ = path
 
 	panic("unimplemented")
-}
-
-func normalizePath(path string) string {
-	if path == "" {
-		return "/"
-	}
-
-	if path[0] != '/' {
-		path = "/" + path
-	}
-
-	if len(path) > 1 && path[len(path)-1] == '/' {
-		path = path[:len(path)-1]
-	}
-
-	return path
 }
 
 var _ Procedure[any, any] = (*baseProcedure[any, any])(nil)
