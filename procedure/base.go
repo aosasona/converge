@@ -32,7 +32,7 @@ func (b *baseProcedure[I, O]) Path() string {
 
 // String implements Procedure.
 func (b *baseProcedure[I, O]) String() string {
-	panic("unimplemented")
+	return b.name
 }
 
 // Type implements Procedure.
@@ -47,6 +47,22 @@ func (b *baseProcedure[I, O]) WithPath(path string) Procedure[I, O] {
 	_ = path
 
 	panic("unimplemented")
+}
+
+func normalizePath(path string) string {
+	if path == "" {
+		return "/"
+	}
+
+	if path[0] != '/' {
+		path = "/" + path
+	}
+
+	if len(path) > 1 && path[len(path)-1] == '/' {
+		path = path[:len(path)-1]
+	}
+
+	return path
 }
 
 var _ Procedure[any, any] = (*baseProcedure[any, any])(nil)
